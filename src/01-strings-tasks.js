@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -18,8 +19,9 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  // throw new Error('Not implemented');
+  return value1 + value2;
 }
 
 
@@ -34,8 +36,9 @@ function concatenateStrings(/* value1, value2 */) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  // throw new Error('Not implemented');
+  return value.length;
 }
 
 /**
@@ -51,8 +54,9 @@ function getStringLength(/* value */) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  // throw new Error('Not implemented');
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -65,8 +69,10 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  // throw new Error('Not implemented');
+  return value.replace('Hello, ', '').replace('!', '');
+  // заменяем Hello на пустую строку при помощи replace, заменяем ! на пустую строку в след .раз
 }
 
 
@@ -80,8 +86,9 @@ function extractNameFromTemplate(/* value */) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  // throw new Error('Not implemented');
+  return value.charAt(0);
 }
 
 /**
@@ -95,8 +102,10 @@ function getFirstChar(/* value */) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  // throw new Error('Not implemented');
+  return value.trim();
+  // метод trim(), чтобы удалить ведущие и завершающие пробелы из строки value
 }
 
 /**
@@ -110,8 +119,10 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
+function repeatString(value, count) {
+  // throw new Error('Not implemented');
+  return value.repeat(count);
+  // repeat(), чтобы повторить строку value указанное количество раз, переданное в count
 }
 
 /**
@@ -126,8 +137,11 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  // throw new Error('Not implemented');
+  return str.replace(new RegExp(value), '');
+  // RegExp, чтобы найти первое вхождение строки value в строке str.
+  //  replace() для замены этого вхождения пустой строкой, тем самым удаляя его из исходной строки
 }
 
 /**
@@ -141,8 +155,11 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  // throw new Error('Not implemented');
+  return str.slice(1, -1);
+  // метод slice() для получения подстроки из исходной строки str,
+  // начиная с индекса 1 и заканчивая индексом -1.
 }
 
 
@@ -156,8 +173,9 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  // throw new Error('Not implemented');
+  return str.toUpperCase();
 }
 
 /**
@@ -175,8 +193,10 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  // throw new Error('Not implemented');
+  return str.split(';');
+  // split() для разделения строки str по символу точки с запятой (;) и создание массива
 }
 
 /**
@@ -202,8 +222,12 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const topLine = `┌${'─'.repeat(width - 2)}┐\n`;
+  const middleLine = `│${' '.repeat(width - 2)}│\n`;
+  const bottomLine = `└${'─'.repeat(width - 2)}┘\n`;
+  const rectangle = topLine + middleLine.repeat(height - 2) + bottomLine;
+  return rectangle;
 }
 
 
@@ -223,8 +247,44 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  // throw new Error('Not implemented');
+  let result = '';
+  // Переменная для хранения закодированной строки используем цикл цикл for
+  //              для перебора всех символов в исх.строке str.
+  // Для каждого символа получаем числовое значение.
+  // В зависимости от типа символа применяем формулу ROT13
+  //              для изменения символа на другой символ из алфавита.
+  // В ASCII-кодировке буквы заглавных латинских букв находятся в диапазоне от 65 до 90,
+  //              а строчные буквы - от 97 до 122.
+  // При вычитании 65 или 97 мы приводим числовое значение символа к диапазону от 0 до 25.
+  // Затем, после сдвига и взятия остатка от деления на 26,
+  //              добавление 65 или 97 позволяет вернуться к числовому значению символа
+  //              в диапазоне заглавных или строчных букв ASCII.
+  // Изменяем символ на другую заглавную букву с помощью формулы ROT13
+  //              ((charCode - 65 + 13) % 26) + 65
+  //              charCode - 65: отнимаем 65,
+  //              чтобы получить значение от 0 до 25 (A = 0, B = 1, и т.д.)
+  //              + 13: сдвигаем значение на 13 позиций по алфавиту % 26:
+  //              берем остаток от деления на 26, чтобы избежать выхода за пределы алфавита. + 65:
+  //              добавляем 65, чтобы получить числовое значение символа обратно
+  //              в диапазоне заглавных букв (A = 65, B = 66, и т.д.)
+  for (let i = 0; i < str.length; i++) {
+    const charCode = str.charCodeAt(i);
+    // Получаем числовое значение символа по его индексу в строке
+
+    if (charCode >= 65 && charCode <= 90) {
+      // Если символ - заглавная буква
+      result += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+    } else if (charCode >= 97 && charCode <= 122) {
+      // Если символ - строчная буква
+      result += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+    } else {
+      // Если символ не является буквой (например, пробелы, знаки препинания и т.д.)
+      result += str.charAt(i); // Просто добавляем символ без изменений
+    }
+  }
+  return result;
 }
 
 /**
@@ -240,8 +300,9 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  // throw new Error('Not implemented');
+  return typeof value === 'string' || value instanceof String;
 }
 
 
@@ -269,8 +330,15 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  // throw new Error('Not implemented');
+  const desk = [
+    'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
+  ];
+  return desk.indexOf(value);
 }
 
 
